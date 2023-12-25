@@ -1,0 +1,477 @@
+#1
+f = [1,2,3]
+f.reverse()
+print(f)
+
+#2
+lst=[1,2,3] 
+def change(lst):
+    f1 = lst[0]
+    f2 = lst[-1]
+    lst[0] = f2
+    lst[-1] = f1
+    return lst
+print(change(lst))
+
+#3
+def to_list(*args):
+    return list(args)
+print(to_list(1,2,3))  #f
+
+#4
+def useless(f):
+    return max(f) / len(f)
+print(useless([1,2,3]))
+
+#5
+def list_sort(lst):
+    lst.sort(key=lambda f: abs(f), reverse=True)
+    return lst
+print(list_sort([1,2,3]))
+
+#6
+def all_eq(lst):
+    max_item = max(lst, key=lambda f: len(f))  #123
+    max_len = len(max_item)
+    return [item.ljust(max_len, '_') for item in lst]
+print(all_eq(['f','ffff', 'ffffffff']))
+
+#7
+def to_float(f):
+    if isinstance(f,(int,float)):
+        return float(f)
+    return "Невозможно преобразовать"
+print(to_float(123))
+
+#8
+def avg_5(a,b,c,d):
+    return round((a+b+c+d)/4,5)
+print(avg_5(1,2,3,5))
+
+#9
+def mul_to_int(a,b):
+    f=a* b
+    if float(f).is_integer():
+        return int(f)
+    return f
+print(mul_to_int(1.3,2))
+
+#10
+def shar(v):
+    r=pow(((v * 3) / (4 * 3.14)),1.0 / 3)
+    print(r)
+    return r
+shar(45)
+
+#11
+def dislike_6(a):
+    if (type (a) is int or type(a) is float) and a == 6:
+        return 'Только не 6!'
+    return 'cool'
+print(dislike_6(6))
+print(dislike_6(123))
+
+#12
+def help_bool(letter=None):
+    if letter == 'к':
+        return 'A or B = B or A\nA and B = B and A'
+    elif letter == 'а':#f123
+        return 'A or (B or C) == (A or B) or C == A or B or C\n' \
+               'A and (B and C) == (A and B) and C == A and B and C'
+    elif letter == 'д':
+        return 'A and (B or C) == (A and B) or (A and C) \nA or (B and C) == (A or B) and (A or C)'
+    elif letter == 'м':
+        return 'not(A or B) == not A and not B \nnot(A and B) == not A or not B\n'\
+               'not(A < B) == A >= B\nnot(not(A)) = A'
+    else:
+        return 'к – Коммутативность, д – Дистрибутивность, а – Ассоциативность, ' \
+           'м – Правило Де Моргана'
+print(help_bool('к'))
+print(help_bool('д'))
+print(help_bool('а'))
+print(help_bool('м'))
+
+#13
+def to_dict(lst):
+    return {element: element for element in lst}
+print(to_dict([1,2,3]))
+
+#14
+
+#15
+
+def count_it(sequence):
+    num_frequency = {int(item): sequence.count(item) for item in sequence}
+    sorted_num_frequency = sorted(num_frequency.items(), key=lambda element: element[1])
+    return dict(sorted_num_frequency[-3:])
+print(count_it('123321231231322'))
+
+#16
+dict = {'f1':1, 'f2': 2,'f3': 3, 'f4':4,'f5':5}
+a = list(dict.keys())[0]
+b = list(dict.keys())[-1]
+c = dict[a]
+d = dict[b]
+dict[a] = d
+dict[b] = c
+del dict[list(dict.keys())[1]]
+dict["new_key"] = "new_value"
+print(dict)
+
+#17
+def search_substr(subst, st):
+    if subst.lower() in st.lower():
+        return 'Есть контакт!'
+    else:
+        return 'Мимо!'
+print(search_substr("fff", "f123f"))
+
+#18
+def first_last(letter, st):
+    first = st.find(letter)
+    if first < 0:
+        return None, None
+    last = st.rfind(letter)
+    return first, last
+print(first_last('f', '1f23f'))
+
+#19
+from collections import Counter
+def top3(st):
+    counter_top3 = Counter(st.replace(' ', '')).most_common(3)
+    return ', '.join([f'{letter} - {cnt}' for letter, cnt in counter_top3])
+print(top3('Thank you, Georgy Vladimirovich, for the programming test!'))
+
+#20
+def camel(st):
+    new_st = ''
+    letter_counter = 0
+    for index, val in enumerate(st):
+        if val.isalpha():
+            if letter_counter % 2 == 0:
+                new_st += val.upper()
+            else:
+                new_st += val.lower()
+            letter_counter += 1
+        else:
+            new_st += val
+    return new_st
+print(camel('Alley theory'))
+#21
+def shortener(st):
+    while '(' in st or ')' in st:
+        left = st.rfind('(')
+        right = st.find(')', left)
+        st = st.replace(st[left:right + 1], '')
+    return st
+print(shortener('fffff(123)ffffff'))
+
+#22
+def cleaned_str(st):
+    clean1=[]
+    for symbol in st:
+        if symbol == '@' and clean1:
+            clean1.pop()
+        elif symbol != '@':
+            clean1.append(symbol)
+    return ''.join(clean1)
+print (cleaned_str('гр@оо@лк@оц@ва'))
+
+#23
+a = [1,2,3]
+b = [5,4,6]
+c = []
+def f(a, b):
+    c = []
+    for i in range(len(a)):
+        c.append([a[i], b[i]])
+    return c
+print(f(a, b))
+
+#24
+f=['Новый год','2024']
+def fHellof(f):
+    for i in range(len(f)):
+        c=f[i]
+        F='Встречаем,'+str(c )
+        print(F)
+fHellof(f)
+
+#25
+f='ffFfFfF123'
+def F(b):
+    for i in range(len(f)-1): 
+        n=f[i]
+        m=f[i+1]
+        if n==m:
+            print('True')
+F(b)
+
+#26
+F='ffff ff f   '
+while "  " in F:
+    F=F.replace("  "," ")
+print(F)
+
+#27
+def fweight(r, h):
+    V = (3.14 * pow(r, 2)) * h #f123fff
+    m = V * 0.001
+    return m
+print(fweight(16, 8))
+
+#28
+m='1, 2, 3'
+f=1
+d=[]
+def trtr(m,f):
+   for i in range(len(m)):
+       if m[i]!=" " and m[i]!=",":
+           n=int(m[i])
+           d.append(n)      
+   print(d)   
+   for i in d:
+       f=f*i
+   print(f)
+trtr(m,f)
+
+#29
+n = [1,2,3]
+m = [10,5,4]
+def v(n, m):
+    boxn = 1
+    boxm = 1
+    for i in n:
+         boxn = i *  boxn
+    for i in m:
+        boxm= i *boxm
+    return  boxn + boxm
+print(v(n, m))
+
+#30
+x1=(1)
+y1=(4)
+x2=(2)
+y2=(7)
+a=x1-x2
+b=y1-y2
+c=a**2 + b**2
+d=c**0.5
+print (d)
+
+#31
+f='Доброй ночи!'
+def dream(f):
+    while 'о' in f:
+        f=f.replace('о','4')
+    while 'н' in f:
+        f=f.replace('н','3')
+    print(f)
+dream(f)
+
+#32
+a=[1, 2, 3]
+b=[]
+f=0
+for i in range (len(a)):
+    n=a[i]
+    f=f+n
+    b.append(f)
+print(b)
+
+#33
+f = [1,2,3]
+def h(f):
+    m = True
+    i= 10
+    for n in f:
+        if n > i:
+            i = n
+            continue
+        else:
+            m = False
+            break
+    if m == True:
+        print('Возрастают')
+    else:
+        print('Не возрастают')
+h(f) 
+
+#34
+def smedian(n):
+    n = sorted(n)
+    l = len(n)
+    m = l // 2
+    if l % 2 == 0:
+        median = (f[m - 1] + f[m]) / 2
+    else:
+        median = f[m]
+    return median
+n = [1,2,3]
+median = smedian(n)
+print(median)
+
+#35
+a=''
+while True:
+    n=input()
+    if n=='e':
+        b='A'
+        a=a+b
+    elif n=='eeeee':
+        c='E'
+        a=a+c
+    elif n=='eeeeeee':
+        g='G'
+        a=a+g
+    else:
+        break
+print(a)
+
+#36
+F='f fff f'
+f=F[::-1]
+print(f.upper())
+
+#37
+n=['f1','f2','f3','прикол']
+m=['прикол']
+d=[]
+for i in range (len(n)):
+    t= n[i]
+    for f in range (len(m)):
+        r=m[f]
+        if t!=r:
+            d.append(t)
+print(d)
+
+#38
+a=input()
+b=input()
+if a==b:
+    print('Ничья')
+else:
+    if a=='бумага':
+        if b=='камень':
+            print('вы победили!')
+        else:
+            print('вы проиграли!')
+    if a=='камень':
+        if b=='бумага':
+            print('вы проиграли!')
+        else:
+            print('вы победили!')
+    if a=='ножницы':
+        if b=='бумага':
+            print('вы победили!')
+        else:
+            print('вы проиграли!')
+
+#39
+def c(a):
+    total = sum(a)
+    if total % 3 == 0:
+        return True
+    else:
+        return False
+a = [1, 2, 3]
+f = c(a)
+print(f)  
+
+#40
+a='f123???????!!!!!!!!'
+while "??" in a: 
+    a=a.replace("??","?")
+while "!!" in a: 
+    a=a.replace("!!","!")
+print(a)
+
+#41
+a=[1, 2, 3]
+f=0
+for i in a:
+     s=f+a[1]
+print(s)
+if s>21:
+     print('true')
+else:
+     print('false')
+
+#42
+f='1f23fFf13f12fFFF23'
+d=0
+fk=f.split()
+summ = 0
+for i in f:
+    if i.isdigit():
+        summ+=int(i)
+print(summ)
+
+#43
+f='+f+F+1+2+3+f+'
+d=[]
+m=0
+k=1
+for i in range (len(f)):
+    if f[i]!='+':
+        if f[i-1]=='+' and f[i+1]=='+':
+            d.append(m)
+        else:
+            d.append(k)
+s=sum(d)
+if s==0:
+    print('True')
+else: 
+    print('False')
+
+#44
+def time(str1): 
+    if str1[-2:] == "AM" and str1[:2] == "12": 
+        return "00" + str1[2:-2] 
+    elif str1[-2:] == "AM": 
+        return str1[:-2] 
+    elif str1[-2:] == "PM" and str1[:2] == "12": 
+        return str1[:-2] 
+    else: 
+        return str(int(str1[:2]) + 12) + str1[2:8]
+print(time("08:05:45 PM")) 
+
+#45
+import re
+def d(p):
+    s = 0
+    if len(p) >= 8:
+        s += 1
+    if re.search("[A-Z]", p):
+        s += 1
+    if re.search("[a-z]", p):
+        s += 1
+    if re.search("[0-9]", p):
+        s += 1
+    if re.search("[!@#$%^&*()-_+=]", p):
+        s += 1
+    return s
+p = "fFnim0791"
+print(d(p))
+
+#46
+#Хз
+
+#47
+def ln(length):
+    if length == 1:
+        return 0
+    count = 0
+    for i in range(10 ** (length // 2 - 1), 10 ** (length // 2)):
+        left_part = str(i).zfill(length // 2)
+        left_sum = sum(map(int, left_part))
+        for j in range(10 ** (length // 2 - 1), 10 ** (length // 2)):
+            right_part = str(j).zfill(length // 2)
+            right_sum = sum(map(int, right_part))
+            if left_sum == right_sum:
+                count += 1
+    return count
+length = 4
+r = ln(length)
+print(r)
+#ДОБРОЙ НОЧИ !!!!!!!!!!!!!!!!!!
